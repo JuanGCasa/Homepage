@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+</head>
+<body style="background-color: #ececec;">
+
+<div id="mySidebar" class="sidebar">
+  <div class="header-flex"> <!-- Flex container -->
+    <img src="assets\Original-transparente 1.svg" alt="Sidebar Image" id="sidebarImage" class="sidebar-img"/> <!-- Image should display inline with the button -->
+    <a href="javascript:void(0)" class="togglebtn" onclick="toggleSidebar()">☰</a>
+  </div>
+  
+  <!-- Search bar -->
+  <div class="search-container">
+    <input type="text" placeholder="Buscar en menu..." class="search-input">
+    <button type="button" class="search-button"><img src="assets/icons/search 1.svg" alt="Search icon"></button>
+  </div>
+
+  <div class="header-options">
+    <div class="icon-container">
+      <span class="icon icon1"></span>
+      <span class="icon-title">Cuentas Corrientes</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon2"></span>
+      <span class="icon-title">Stock de Granos</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon7"></span>
+      <span class="icon-title">Precios BLD AGRO</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon3"></span>
+      <span class="icon-title">Fijaciones y pesificaciones</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon4"></span>
+      <span class="icon-title">Solicitud de pagos</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon9"></span>
+      <span class="icon-title">Solicitud de cupos</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon5"></span>
+      <span class="icon-title">Estado de cupos</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon6"></span>
+      <span class="icon-title">Descargas</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon6"></span>
+      <span class="icon-title">BLD + Accionistas</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon7"></span>
+      <span class="icon-title">Puntos</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon8"></span>
+      <span class="icon-title">Tablero de Control</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon9"></span>
+      <span class="icon-title">Reportes</span>
+    </div>
+    <div class="icon-container">
+      <span class="icon icon10"></span>
+      <span class="icon-title">Consultas y reclamos</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="main-content" style="position: relative;">
+  <div class="top">
+    <div id="user" class="user-info">
+      <img src="assets\identity.svg" alt="User Icon" class="user-icon"> 
+      <div class="user-details">
+        <div class="username">Tecas Termomecanica S.A</div>
+        <div class="user-cellphone">30711342512</div>
+      </div>
+    </div>
+  </div>
+  <div id="mainheader" class="mainheader">
+    <p class="page-title">Saldos</p>
+  </div>
+  
+  <!-- Overlapping div -->
+  <div class="overlay-div">
+    <div class="grid-container">
+      <div class="card">BLD SA</div>
+      <div class="card">BLD AGRO SA</div>
+      <div class="card">BLD FINANZAS</div>
+      <div class="card">PUNTOS</div>
+      <!-- Add more cards as needed -->
+    </div>
+
+    <div class="grid-container">
+      <div class="card card-tall">Accesos Directos</div>
+      <div class="card card-tall novedades">Novedades</div>
+      <div class="card card-tall pizarra">Pizarra</div>
+      <!-- Add more cards as needed -->
+    </div>
+
+    <div class="grid-container">
+      <div class="card card-bottom tablero-control">Tablero Control</div>
+      <div class="card card-bottom">Card 7</div>
+      <!-- Add more cards as needed -->
+    </div>    
+
+  </div>
+
+  <!-- El resto de tu contenido de la página va aquí -->
+</div>
+
+<script>
+  // Función para alternar la barra lateral
+  // Hide icon titles when the page loads if the sidebar is collapsed
+  document.addEventListener('DOMContentLoaded', function() {
+    var sidebar = document.getElementById("mySidebar");
+    var iconTitles = document.querySelectorAll('.icon-title');
+    var searchContainer = document.querySelector('.search-container');
+    if (sidebar.style.width !== '230px') {
+      iconTitles.forEach(function(title) {
+        title.style.display = 'none';
+      });
+    }
+  });
+
+  function checkSidebarWidth() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarWidth = sidebar.offsetWidth;
+  var iconTitles = document.querySelectorAll('.icon-title');
+  var searchContainer = document.querySelector('.search-container');
+  iconTitles.forEach(function(title) {
+    title.style.display = sidebarWidth === 230 ? 'inline-block' : 'none';
+  });
+  if (sidebarWidth === 230) {
+    searchContainer.classList.add('active');
+  } else {
+    searchContainer.classList.remove('active');
+  }
+  }
+
+  document.getElementById("mySidebar").addEventListener("transitionend", function(event) {
+    if (event.propertyName === "width") {
+      checkSidebarWidth();
+    }
+  });
+
+  // Función para alternar la barra lateral
+  function toggleSidebar() {
+    var sidebar = document.getElementById("mySidebar");
+    var sidebarImage = document.getElementById("sidebarImage"); // Get the image
+    var toggleButton = document.querySelector('.togglebtn'); // Access the toggle button
+    var searchContainer = document.querySelector('.search-container');
+
+    if (sidebar.style.width === '230px') {
+      sidebar.style.width = '74px';
+      sidebarImage.style.display = 'none'; // Hide the image
+      toggleButton.style.marginLeft = '0px'; // Reset button position when sidebar collapses
+      //document.querySelector('.main-content').style.marginLeft = '0%';
+      // Reset the width of icon containers when sidebar collapses
+      var iconContainers = document.querySelectorAll('.icon-container');
+      iconContainers.forEach(function(container) {
+        container.style.width = 'auto';
+      });
+      // Hide icon titles when sidebar is collapsed
+      var iconTitles = document.querySelectorAll('.icon-title');
+      searchContainer.classList.remove('active');
+      iconTitles.forEach(function(title) {
+        title.style.display = 'none';
+      });
+    } else {
+      sidebar.style.width = '230px';
+      sidebarImage.style.display = 'block'; // Show the image
+      toggleButton.style.marginLeft = '0px'; // Move button with the sidebar
+      //document.querySelector('.main-content').style.marginLeft = '200px';
+    }
+  }
+  checkSidebarWidth();
+</script>
+
+</body>
+</html>
