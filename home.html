@@ -2,9 +2,11 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
     <link rel="stylesheet" type="text/css" href="cards.css">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body style="background-color: #ececec;">
 
@@ -93,48 +95,54 @@
   
   <!-- Overlapping div -->
   <div class="overlay-div">
-    <div class="grid-container">
-      <div class="card">
-        <div class="card-header">
-          <span alt="Options" class="corner-vector"></span>
-          <div class="card-title">BLD SA</div>
-          <div class="card-points">
-            <img src="assets\card-icons\arrowrise.svg" alt="Rise" class="arrow-rise">
-            +2 pts
+    <div class="carousel-container"> 
+      <div class="grid-container">
+        <div class="card">
+          <div class="card-header">
+            <span alt="Options" class="corner-vector"></span>
+            <div class="card-title">BLD SA</div>
+            <div class="card-points">
+              <img src="assets\card-icons\arrowrise.svg" alt="Rise" class="arrow-rise">
+              +2 pts
+            </div>
+          </div>
+          <div class="card-body" style="color: #00588E;">
+            $ 11.400.000 
           </div>
         </div>
-        <div class="card-body" style="color: #00588E;">
-          $ 11.400.000 
+        <div class="card">
+          <div class="card-header">
+            <span alt="Options" class="corner-vector"></span>
+            <div class="card-title">BLD AGRO SA</div>
+          </div>
+          <div class="card-body" style="color: #B32D2D;">
+            -$ 11.400.000 
+          </div>
         </div>
+        <div class="card">
+          <div class="card-header">
+            <span alt="Options" class="corner-vector"></span>
+            <div class="card-title">BLD FINANZAS</div>
+          </div>
+          <div class="card-body" style="color: #00588E;">
+            $ 11.400.000 
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span alt="Options" class="corner-vector"></span>
+            <div class="card-title">PUNTOS</div>
+          </div>
+          <div class="card-body" style="color: #00588E;">
+            <span>30.000 </span><span style="font-weight: 500;">pts</span>
+          </div>
+        </div>
+        <!-- Add more cards as needed -->
       </div>
-      <div class="card">
-        <div class="card-header">
-          <span alt="Options" class="corner-vector"></span>
-          <div class="card-title">BLD AGRO SA</div>
-        </div>
-        <div class="card-body" style="color: #B32D2D;">
-          -$ 11.400.000 
-        </div>
+      <div class="carousel-buttons">
+        <button class="carousel-btn prev-btn" onclick="swapCards('prev')">&lt;</button>  
+        <button class="carousel-btn next-btn" onclick="swapCards('next')">&gt;</button>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <span alt="Options" class="corner-vector"></span>
-          <div class="card-title">BLD FINANZAS</div>
-        </div>
-        <div class="card-body" style="color: #00588E;">
-          $ 11.400.000 
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <span alt="Options" class="corner-vector"></span>
-          <div class="card-title">PUNTOS</div>
-        </div>
-        <div class="card-body" style="color: #00588E;">
-          <span>30.000 </span><span style="font-weight: 500;">pts</span>
-        </div>
-      </div>
-      <!-- Add more cards as needed -->
     </div>
 
     <div class="grid-container">
@@ -191,7 +199,7 @@
   });
 
   // Función para alternar la barra lateral
-  function toggleSidebar() {
+  function toggleSidebarDesktop() {
     var sidebar = document.getElementById("mySidebar");
     var sidebarImage = document.getElementById("sidebarImage"); // Get the image
     var toggleButton = document.querySelector('.togglebtn'); // Access the toggle button
@@ -220,7 +228,58 @@
       //document.querySelector('.main-content').style.marginLeft = '200px';
     }
   }
+
+  function toggleSidebarMobile() {
+    var sidebar = document.getElementById("mySidebar");
+    var sidebarImage = document.getElementById("sidebarImage");
+    var toggleButton = document.querySelector('.togglebtn');
+    var searchContainer = document.querySelector('.search-container');
+    var iconTitles = document.querySelectorAll('.icon-title');
+
+    if (sidebar.style.height === '100%') {
+      sidebar.style.height = '75px';
+      sidebarImage.style.display = 'block';
+      searchContainer.classList.remove('active');
+    } else {
+      sidebar.style.height = '100%';
+      sidebarImage.style.display = 'block';
+      searchContainer.classList.add('active');
+      iconTitles.forEach(function(title) {
+        title.style.display = 'inline-block';
+      });
+    }
+  }
+
+  function toggleSidebar() {
+    var windowWidth = window.innerWidth;
+    if (windowWidth <= 767) {
+      toggleSidebarMobile();
+    } else {
+      toggleSidebarDesktop();
+    }
+}
   checkSidebarWidth();
+
+  function swapCards(direction) {
+    var cards = document.querySelectorAll('.card');
+    if (direction === 'next') {
+      // Hide the first two cards and show the next two
+      cards[0].style.display = 'none';
+      cards[1].style.display = 'none';
+      cards[2].style.display = 'block';
+      cards[3].style.display = 'block';
+      prevBtn.classList.add('active-btn');
+      nextBtn.classList.remove('active-btn');
+    } else if (direction === 'prev') {
+      // Show the first two cards and hide the next two
+      cards[0].style.display = 'block';
+      cards[1].style.display = 'block';
+      cards[2].style.display = 'none';
+      cards[3].style.display = 'none';
+      prevBtn.classList.remove('active-btn');
+      nextBtn.classList.add('active-btn');
+    }
+  }
 </script>
 
 </body>

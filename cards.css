@@ -88,16 +88,44 @@
     font-size: 2vw; /* Responsive font size */
   }
   
-  /* Set a minimum font size */
-  @media (max-width: 600px) {
-    .card-body {
-      font-size: 15px;
-    }
-  }
-  
   /* Set a maximum font size */
   @media (min-width: 1800px) {
     .card-body {
       font-size: 35px;
     }
+  }
+
+  @media (max-width:767px)  {
+    
+    .card {
+        flex: 0 0 40%;
+        scroll-snap-align: start;
+        /* Add styles for your cards */
+      }
+    
+    .card-body {
+      font-size: 20px;
+    }
+
+    .carousel-buttons {
+      text-align: center;
+      margin-top: 10px; /* Adjust as needed */
+    }
+
+    .carousel-btn {
+      display: inline-block;
+      width: 20px; /* Adjust size as needed */
+      height: 20px; /* Adjust size as needed */
+      border-radius: 50%; /* Make it circular */
+      background-color: #6d6c6c; /* Adjust color as needed */
+      margin: 0 5px; /* Adjust spacing as needed */
+      border: none; /* Remove default border */
+      cursor: pointer;
+    }
+
+    /* Active button colors */
+    .active-btn {
+      background-color: #00588ED9; /* Green when next is active */
+    }
+    
   }
