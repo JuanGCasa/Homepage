@@ -129,3 +129,94 @@
     }
     
   }
+
+
+  .header-news {
+    background-image: url('assets/card-icons/news header common.png');
+    background-size: cover; /* Asegúrate de que la imagen cubra todo el encabezado */
+    background-position: center; /* Centra la imagen en el encabezado */
+    color: white;
+    width: 110%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+  
+  .header-blue {
+    background-image: url('assets/card-icons/blue header common.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+
+  .row-cardprices {
+    display: flex;
+    justify-content: space-between;
+    height: 45%;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .card-news {
+    width: calc(66% - 5px);
+    border-radius: 30px;
+    height: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Gentle shadow */
+  }
+
+  .card-sub {
+    width: calc(33% - 5px);
+    border-radius: 20px;
+    height: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Gentle shadow */
+  }
+
+  .news-header {
+    color: white;
+    padding: 10px; /* Ajusta el padding según sea necesario */
+    display: flex;
+    align-items: center;
+  }
+  
+  .sub-card-content {
+    padding: 20px; /* Ajusta el padding según sea necesario */
+  }
+  
+  .price-and-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .price {
+    font-size: 24px; /* Ajusta el tamaño de fuente según sea necesario */
+    margin-right: 10px; /* Ajusta el margen según sea necesario */
+  }
+  
+  .plus-icon {
+    position: absolute;
+    bottom: -15px; /* Ajusta la posición según sea necesario */
+    right: -15px; /* Ajusta la posición según sea necesario */
+  }
+
+  .principal-news{
+    left: -25px;
+    top: 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 110%;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #01ae43;
+    line-height: 25px;
+  }
